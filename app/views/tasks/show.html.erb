@@ -1,0 +1,21 @@
+<h1><%= @task.title %></h1>
+<p><%= @task.details %></p>
+
+<p>
+  <%= check_box_tag("completed",:completed , @task.completed, disabled: true) %>
+  <%= link_to "see all tasks", tasks_path  %>
+</p>
+
+<p><%= simple_form_for(@task) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :details %>
+  <%= f.input :completed %>
+  <%= f.submit %>
+<% end %>
+</p>
+
+<p><%= link_to "Delete #{@task.title}",
+	task_path(@task),
+	method: :delete,
+	data: { confirm: "Are you sure?" } %>
+</p>
